@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { Component} from 'react';
 import './App.css';
+import { Class } from './Componenet/Class';
+import Funct from './Componenet/Funct';
 
-function App() {
+class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      box1:false,
+      box2:false,
+  }
+  }
+  
+
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{display:"flex"}}>
+        <button onClick={()=>this.setState({box1: !this.state.box1})} style={{margin:"5px"}}>Function Component</button>
+        <button onClick={()=>this.setState({box2: !this.state.box2})} style={{margin:"5px"}}>Class Component</button>
+      </div>
+      <div>
+        {this.state.box1 ?  <Funct /> : null}
+        {this.state.box2 ? <Class /> : null}
+      </div>
     </div>
   );
+  }
 }
 
 export default App;
